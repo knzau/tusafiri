@@ -5,11 +5,14 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggerModule } from 'nestjs-pino';
 
+import { AuthModule } from './auth/auth.module';
 import { AllExceptionsFilter } from './common/all-exceptions.filter';
+import { NoStoreInterceptor } from './common/no-store.interceptor';
 import { ResponseEnvelopeInterceptor } from './common/response-envelope.interceptor';
 import { validateEnv } from './config/env';
 import { DatabaseModule } from './database/database.module';
 import { HealthModule } from './health/health.module';
+import { TripsModule } from './trips/trips.module';
 
 @Module({
   imports: [
@@ -36,11 +39,14 @@ import { HealthModule } from './health/health.module';
       },
     }),
     DatabaseModule,
+    AuthModule,
     HealthModule,
+    TripsModule,
   ],
   providers: [
     { provide: APP_FILTER, useClass: AllExceptionsFilter },
     { provide: APP_INTERCEPTOR, useClass: ResponseEnvelopeInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: NoStoreInterceptor },
   ],
 })
 export class AppModule {}

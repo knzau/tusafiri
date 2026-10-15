@@ -5,6 +5,9 @@ import { validateEnv } from './env';
 const valid = {
   DATABASE_URL: 'postgres://tusafiri:tusafiri@localhost:5432/tusafiri',
   WEB_ORIGIN: 'http://localhost:3000',
+  BETTER_AUTH_SECRET: '0123456789abcdef0123456789abcdef',
+  GOOGLE_CLIENT_ID: 'test-client',
+  GOOGLE_CLIENT_SECRET: 'test-secret',
 };
 
 describe('validateEnv', () => {
@@ -25,6 +28,12 @@ describe('validateEnv', () => {
   it('rejects a trailing slash on the web origin', () => {
     expect(() => validateEnv({ ...valid, WEB_ORIGIN: 'http://localhost:3000/' })).toThrow(
       /no trailing slash/
+    );
+  });
+
+  it('rejects a short session secret', () => {
+    expect(() => validateEnv({ ...valid, BETTER_AUTH_SECRET: 'too-short' })).toThrow(
+      /Invalid environment/
     );
   });
 });

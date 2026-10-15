@@ -12,7 +12,11 @@ const pinClass = {
   3: 'absolute grid size-8 place-items-center rounded-full border-[3px] border-pin bg-day3 text-sm leading-4 font-bold text-on-day shadow-day3',
 } as const;
 
-export function LandingPage() {
+type LandingPageProps = {
+  signedIn?: boolean;
+};
+
+export function LandingPage({ signedIn = false }: LandingPageProps) {
   return (
     <div className="@container w-full min-h-dvh bg-canvas">
       <div className="h-[calc(100cqi*0.625)] w-full overflow-hidden">
@@ -33,7 +37,7 @@ export function LandingPage() {
             </Link>
             <div className="flex-1" />
             <LandingLinkButton
-              href={ROUTES.signIn}
+              href={signedIn ? ROUTES.trips : ROUTES.signIn}
               variant="default"
               leftSection={
                 <span className="grid size-[18px] place-items-center">
@@ -41,7 +45,7 @@ export function LandingPage() {
                 </span>
               }
             >
-              {landingContent.signIn}
+              {signedIn ? landingContent.tripsAction : landingContent.signIn}
             </LandingLinkButton>
           </header>
           <main className="flex min-h-0 flex-1 items-center gap-14 px-12 pb-14">

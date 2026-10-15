@@ -5,6 +5,7 @@ export const landingContent = {
   demoAction: 'Open the demo trip',
   demoNote: 'No account needed',
   signIn: 'Sign in with Google',
+  tripsAction: 'Your trips',
   productName: 'Tusafiri',
   tripName: 'Lisbon',
   tripMeta: '3 days · 2 travelers · ≈ €75 each',

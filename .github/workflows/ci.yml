@@ -18,8 +18,36 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        task: [lint, format:check, typecheck, test, build]
+        task: [lint, format:check, typecheck, build]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup
       - run: pnpm -r --if-present run ${{ matrix.task }}
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: tusafiri
+          POSTGRES_PASSWORD: tusafiri
+          POSTGRES_DB: tusafiri_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tusafiri -d tusafiri_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://tusafiri:tusafiri@localhost:5432/tusafiri_test
+      WEB_ORIGIN: http://localhost:3000
+      BETTER_AUTH_SECRET: 0123456789abcdef0123456789abcdef
+      GOOGLE_CLIENT_ID: ci-google-client
+      GOOGLE_CLIENT_SECRET: ci-google-secret
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm -r --if-present run test

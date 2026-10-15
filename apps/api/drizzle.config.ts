@@ -1,7 +1,9 @@
 import { defineConfig } from 'drizzle-kit';
 
+import { loadRootEnv } from './src/config/load-env-file';
 import { validateEnv } from './src/config/env';
 
+loadRootEnv();
 const env = validateEnv(process.env);
 
 export default defineConfig({

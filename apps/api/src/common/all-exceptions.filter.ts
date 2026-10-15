@@ -1,4 +1,4 @@
-import { type ArgumentsHost, Catch, type ExceptionFilter } from '@nestjs/common';
+import { type ArgumentsHost, Catch, type ExceptionFilter, Inject } from '@nestjs/common';
 import type { Request, Response } from 'express';
 import { Logger } from 'nestjs-pino';
 
@@ -8,7 +8,7 @@ import { toErrorBody } from './to-error-body';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
-  constructor(private readonly logger: Logger) {}
+  constructor(@Inject(Logger) private readonly logger: Logger) {}
 
   catch(exception: unknown, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();

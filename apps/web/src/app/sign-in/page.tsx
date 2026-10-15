@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 
+import { SignInScreen } from '@/features/auth';
 import { MessagePage } from '@/shared/ui/MessagePage';
 
 export const metadata: Metadata = {
@@ -8,9 +10,8 @@ export const metadata: Metadata = {
 
 export default function SignInPage() {
   return (
-    <MessagePage
-      title="Sign in"
-      body="Google sign-in is the next phase. The button on the landing page already points here."
-    />
+    <Suspense fallback={<MessagePage title="Sign in" body="Checking your session." />}>
+      <SignInScreen />
+    </Suspense>
   );
 }

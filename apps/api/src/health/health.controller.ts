@@ -1,10 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Inject } from '@nestjs/common';
 
+import { Public } from '../auth/public.decorator';
 import { HealthService } from './health.service';
 
+@Public()
 @Controller()
 export class HealthController {
-  constructor(private readonly health: HealthService) {}
+  constructor(@Inject(HealthService) private readonly health: HealthService) {}
 
   @Get('health')
   live() {

@@ -23,6 +23,7 @@ ENV NODE_ENV=production
 ENV PORT=3001
 WORKDIR /app
 COPY --from=build --chown=node:node /out ./
+COPY --from=build --chown=node:node /repo/apps/api/drizzle ./drizzle
 USER node
 EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \

@@ -5,6 +5,9 @@ export const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(3001),
   DATABASE_URL: z.string().min(1),
   WEB_ORIGIN: z.url().refine((origin) => !origin.endsWith('/'), 'no trailing slash'),
+  BETTER_AUTH_SECRET: z.string().min(32),
+  GOOGLE_CLIENT_ID: z.string().min(1),
+  GOOGLE_CLIENT_SECRET: z.string().min(1),
 });
 
 export type Env = z.infer<typeof envSchema>;

@@ -7,6 +7,7 @@ const appDir = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  transpilePackages: ['shared'],
   outputFileTracingRoot: path.join(appDir, '../..'),
   cacheComponents: true,
   partialPrefetching: true,
