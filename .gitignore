@@ -2,6 +2,9 @@ node_modules
 .pnpm-store
 .DS_Store
 *.tsbuildinfo
+dist
+coverage
 .env
 .env.*
 !.env.example
+!.env.prod.example

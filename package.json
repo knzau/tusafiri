@@ -4,12 +4,16 @@
   "packageManager": "pnpm@10.15.1",
   "scripts": {
     "dev": "pnpm --dir apps/web dev",
-    "build": "pnpm --dir apps/web build",
-    "lint": "pnpm --dir apps/web lint",
-    "lint:fix": "pnpm --dir apps/web lint:fix",
-    "typecheck": "pnpm --dir apps/web typecheck",
-    "test": "pnpm --dir apps/web test",
-    "format": "pnpm --dir apps/web format",
-    "format:check": "pnpm --dir apps/web format:check"
+    "dev:api": "pnpm --filter api dev",
+    "dev:all": "pnpm --parallel --filter web --filter api dev",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "build": "pnpm -r --if-present run build",
+    "lint": "pnpm -r --if-present run lint",
+    "lint:fix": "pnpm -r --if-present run lint:fix",
+    "typecheck": "pnpm --filter shared build && pnpm -r --if-present run typecheck",
+    "test": "pnpm -r --if-present run test",
+    "format": "pnpm -r --if-present run format",
+    "format:check": "pnpm -r --if-present run format:check"
   }
 }
