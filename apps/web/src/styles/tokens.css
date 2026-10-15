@@ -1,0 +1,67 @@
+:root {
+  --green-300: #a8d46f;
+  --green-400: #8fcb5e;
+  --green-700: #3b7a2a;
+  --green-800: #2f6a25;
+  --yellow-400: #f2c744;
+  --yellow-500: #f7cb45;
+  --terracotta-400: #f08a5d;
+  --terracotta-500: #e8774d;
+  --ink-950: #101310;
+  --ink-900: #161a12;
+  --paper-50: #f7f8f3;
+  --white: #ffffff;
+}
+
+:root,
+[data-mantine-color-scheme='light'] {
+  --bg-canvas: var(--paper-50);
+  --bg-surface: var(--white);
+  --text-primary: var(--ink-900);
+  --text-muted: #4a5143;
+  --text-faint: #6a7160;
+  --text-link: var(--green-800);
+  --text-on-accent: var(--white);
+  --text-on-day: var(--ink-900);
+  --accent: var(--green-700);
+  --border-default: #d5d9cb;
+  --border-focus: var(--green-800);
+  --map-land: #e9ece2;
+  --day-1: #63b04a;
+  --day-2: var(--yellow-500);
+  --day-3: var(--terracotta-500);
+  --pin-stroke: var(--ink-900);
+  --callout-fill: var(--ink-900);
+  --callout-line: var(--ink-900);
+  --callout-text: var(--white);
+  --shadow-card: 0 8px 24px rgb(22 26 18 / 12%);
+  --shadow-day1: 0 0 14px color-mix(in srgb, var(--day-1) 55%, transparent);
+  --shadow-day2: 0 0 14px color-mix(in srgb, var(--day-2) 55%, transparent);
+  --shadow-day3: 0 0 14px color-mix(in srgb, var(--day-3) 55%, transparent);
+}
+
+[data-mantine-color-scheme='dark'] {
+  --bg-canvas: var(--ink-950);
+  --bg-surface: #181c17;
+  --text-primary: #f1f4ea;
+  --text-muted: #a8b09e;
+  --text-faint: #7f8876;
+  --text-link: var(--green-300);
+  --text-on-accent: var(--ink-950);
+  --text-on-day: var(--ink-950);
+  --accent: var(--green-400);
+  --border-default: #2b3128;
+  --border-focus: var(--green-300);
+  --map-land: #151914;
+  --day-1: var(--green-400);
+  --day-2: var(--yellow-400);
+  --day-3: var(--terracotta-400);
+  --pin-stroke: var(--ink-950);
+  --callout-fill: #20251e;
+  --callout-line: var(--yellow-400);
+  --callout-text: #f1f4ea;
+  --shadow-card: 0 8px 24px rgb(0 0 0 / 50%);
+  --shadow-day1: 0 0 14px color-mix(in srgb, var(--day-1) 55%, transparent);
+  --shadow-day2: 0 0 14px color-mix(in srgb, var(--day-2) 55%, transparent);
+  --shadow-day3: 0 0 14px color-mix(in srgb, var(--day-3) 55%, transparent);
+}

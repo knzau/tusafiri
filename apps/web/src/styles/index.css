@@ -1,0 +1,72 @@
+@layer theme, base, mantine, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import '@mantine/core/styles.layer.css';
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import './tokens.css';
+
+@custom-variant dark (&:where([data-mantine-color-scheme='dark'], [data-mantine-color-scheme='dark'] *));
+
+@theme inline {
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-accent: var(--accent);
+  --color-ink: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-link: var(--text-link);
+  --color-on-accent: var(--text-on-accent);
+  --color-on-day: var(--text-on-day);
+  --color-line: var(--border-default);
+  --color-focus: var(--border-focus);
+  --color-map: var(--map-land);
+  --color-day1: var(--day-1);
+  --color-day2: var(--day-2);
+  --color-day3: var(--day-3);
+  --color-pin: var(--pin-stroke);
+  --color-callout: var(--callout-fill);
+  --color-callout-line: var(--callout-line);
+  --color-callout-text: var(--callout-text);
+  --shadow-card: var(--shadow-card);
+  --shadow-day1: var(--shadow-day1);
+  --shadow-day2: var(--shadow-day2);
+  --shadow-day3: var(--shadow-day3);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 36em;
+  --breakpoint-sm: 48em;
+  --breakpoint-md: 62em;
+  --breakpoint-lg: 75em;
+  --breakpoint-xl: 88em;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* The landing artboard is a fixed 1440×900 frame. Dividing a container
+ * length by px needs a slash, which Tailwind reads as a class modifier. */
+.landing-frame {
+  width: 1440px;
+  height: 900px;
+  transform-origin: top left;
+  transform: scale(calc(100cqi / 1440px));
+}
