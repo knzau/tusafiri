@@ -1,0 +1,15 @@
+{
+  "name": "tusafiri",
+  "private": true,
+  "packageManager": "pnpm@10.15.1",
+  "scripts": {
+    "dev": "pnpm --dir apps/web dev",
+    "build": "pnpm --dir apps/web build",
+    "lint": "pnpm --dir apps/web lint",
+    "lint:fix": "pnpm --dir apps/web lint:fix",
+    "typecheck": "pnpm --dir apps/web typecheck",
+    "test": "pnpm --dir apps/web test",
+    "format": "pnpm --dir apps/web format",
+    "format:check": "pnpm --dir apps/web format:check"
+  }
+}
